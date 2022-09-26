@@ -25,6 +25,9 @@ app.use(function (req, res, next) {
 app.use(errorHandler);
 
 //start server
-app.listen(3001, () => {
-  console.log("listeniing at port:3001");
+app.listen(process.env.PORT || 4001, () => {
+  console.log(
+    "listeniing at port:" +
+      (process.env.PORT !== undefined ? process.env.PORT : 4001)
+  );
 });
