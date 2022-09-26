@@ -25,6 +25,6 @@ app.use(function (req, res, next) {
 app.use(errorHandler);
 
 //start server
-app.listen(3001, () => {
-  console.log("listeniing at port:3001");
+app.listen(4001, () => {
+  console.log("listeniing at port:4001");
 });
