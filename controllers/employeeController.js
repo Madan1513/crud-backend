@@ -55,4 +55,22 @@ const deleteEmployee = (req, res, next) => {
   }
 };
 
-module.exports = { addEmployee, getEmployee, updateEmployee, deleteEmployee };
+const getCompletedEmployees = (req, res, next) => {
+  try {
+    const employees = getEmployeeData();
+    let completedEmployees = employees.filter((employee) => {
+      return employee.isCompleted === true;
+    });
+    res.send(completedEmployees);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+module.exports = {
+  addEmployee,
+  getEmployee,
+  updateEmployee,
+  deleteEmployee,
+  getCompletedEmployees,
+};
