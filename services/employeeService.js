@@ -1,11 +1,22 @@
 const dataPath = "./employee.json";
 const fs = require("fs");
-const { nextTick } = require("process");
 
 const errObject = {
   status: "",
   message: "",
   phase: "",
+};
+
+const saveEmployeeData = (data) => {
+  try {
+    const stringifyData = JSON.stringify(data);
+    fs.writeFileSync(dataPath, stringifyData);
+  } catch (error) {
+    errObject.status = 500;
+    errObject.message = "Error in saving data please try again";
+    errObject.phase = "Write service phase";
+    throw errObject;
+  }
 };
 
 const getEmployeeData = () => {
@@ -20,4 +31,4 @@ const getEmployeeData = () => {
   }
 };
 
-module.exports = { getEmployeeData };
+module.exports = { saveEmployeeData, getEmployeeData };
